@@ -13,8 +13,10 @@ class Drug(db.Model):
 class Transaction(db.Model):
     __tablename__= "transactions"
     id = db.Column(db.Integer, primary_key=True)
+    status= db.Column(db.String(20))  #transaction_in or transaction_out
     drug_id = db.Column(db.Integer(), db.ForeignKey('drugs.id'))
     quantity= db.Column(db.Integer, nullable=False)
+    
     transaction_time = db.Column(db.DateTime, default=datetime.utcnow)
 
     drugs = relationship("Drug", secondary="movements")
