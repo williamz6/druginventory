@@ -14,6 +14,11 @@ class Movement(db.Model):
   __tablename__ = 'movements'
   id = db.Column(db.Integer(), primary_key=True)
   drug_name = db.Column(db.String(100), unique=True) 
+  drug= db.Column(
+        db.Integer,
+        db.ForeignKey('example.sqlalchemy_tutorial_teams.id'),
+        nullable=False
+    )
   destination= db.Column(db.String(100))
   quantity = db.Column(db.Integer)
   status= db.Column(db.String(20))  #transaction_in or transaction_out
